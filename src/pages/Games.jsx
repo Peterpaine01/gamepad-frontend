@@ -17,12 +17,15 @@ const Games = () => {
   const [gamesList, setGamesList] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`
+          `https://api.rawg.io/api/games?key=${
+            import.meta.env.VITE_API_KEY
+          }&page=${page}`
         );
         setData(response.data);
         setGamesList(response.data.results);
@@ -61,17 +64,18 @@ const Games = () => {
         {isLoading === true ? (
           <p>Loading</p>
         ) : (
-          <div className="container">
-            <section className="list-map">
-              <h1>Most Relevance Games</h1>
-              <div className="flex-parent">
-                {gamesList.map((game) => {
-                  return <Card key={game.id} item={game} />;
-                })}
-              </div>
-            </section>
-          </div>
+          <section className="list-map">
+            <h1>Most Relevance Games</h1>
+            <div className="flex-parent">
+              {gamesList.map((game) => {
+                return <Card key={game.id} item={game} />;
+              })}
+            </div>
+          </section>
         )}
+        <section className="pagination">
+          <a href="{data.next}">{data.next.split("page=")}[1]</a>
+        </section>
       </div>
     </main>
   );
