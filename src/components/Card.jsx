@@ -21,9 +21,13 @@ const Card = ({ item }) => {
     setSearchReq("");
   };
 
+  const addEllipsis = (text, maxLength) => {
+    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+  };
+
   return (
     <>
-      <Link to={`/game/${item.id}`}>
+      <Link className="link-card" to={`/game/${item.id}`}>
         <article
           className="card"
           style={{
@@ -31,7 +35,7 @@ const Card = ({ item }) => {
           }}
         >
           <div className="card-bottom">
-            <h2>{item.name}</h2>
+            <h2>{addEllipsis(item.name, 30)}</h2>
           </div>
         </article>
       </Link>

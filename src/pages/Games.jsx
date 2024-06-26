@@ -18,6 +18,8 @@ const Games = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [nextPage, setNextPage] = useState();
+  const [prevPage, setPrevPage] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +31,25 @@ const Games = () => {
         );
         setData(response.data);
         setGamesList(response.data.results);
-        console.log(response.data);
+        const next = response.data.next;
+        const numNext = next.split("page=");
+        setNextPage(numNext[1]);
+
+        if (response.data.previous) {
+          const prev = response.data.previous;
+          const numPrev = prev.split("page=");
+
+          if (typeof numPrev[1] === "undefined") {
+            setPrevPage(1);
+            console.log("numPrev[1]", numPrev[1]);
+          } else {
+            setPrevPage(numPrev[1]);
+          }
+        } else {
+          setPrevPage(0);
+          console.log(response.data.previous);
+        }
+
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -37,12 +57,9 @@ const Games = () => {
     };
 
     fetchData();
-  }, []);
-  console.log(gamesList);
-  // if (isLoading === true) {
-  //   // We haven't finished checking for the data yet
-  //   return <p>Loading</p>;
-  // }
+  }, [page]);
+  console.log("gameList >", gamesList);
+  console.log("prevPage >", prevPage);
 
   return (
     <main>
@@ -54,6 +71,8 @@ const Games = () => {
             setSearch={setSearch}
             kind={"a game..."}
             destination={"/"}
+            gamesList={gamesList}
+            setGamesList={setGamesList}
           />
           <p>
             {isLoading === true
@@ -73,9 +92,27 @@ const Games = () => {
             </div>
           </section>
         )}
-        <section className="pagination">
-          <a href="{data.next}">{data.next.split("page=")}[1]</a>
-        </section>
+        {isLoading === false && (
+          <section className="pagination">
+            <button
+              onClick={() => {
+                setPage(prevPage);
+              }}
+              className={prevPage === 0 ? "btn-prev disabled" : "btn-prev"}
+            >
+              <i className="fa-solid fa-angle-left"></i>
+            </button>
+
+            <button
+              onClick={() => {
+                setPage(nextPage);
+              }}
+              className="btn-next"
+            >
+              <i className="fa-solid fa-angle-right"></i>
+            </button>
+          </section>
+        )}
       </div>
     </main>
   );
