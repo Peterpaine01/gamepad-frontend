@@ -191,18 +191,7 @@ const GameDetail = () => {
                 {gameDetail.esrb_rating && (
                   <div className="spec">
                     <h3>Age rating</h3>
-                    <p>
-                      {gameDetail.esrb_rating.map((esrb_rating, index) => {
-                        return (
-                          <>
-                            <span key={index}>{esrb_rating.name}</span>
-                            {index === gameDetail.esrb_rating.length - 1
-                              ? ""
-                              : ", "}
-                          </>
-                        );
-                      })}
-                    </p>
+                    <p>{gameDetail.esrb_rating.name}</p>
                   </div>
                 )}
               </div>

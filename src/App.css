@@ -360,6 +360,12 @@ nav.menu-mobile .btn-outlined {
 .two-columns > div {
   width: calc(50% - 30px);
 }
+
+.two-columns p {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
+}
 .img-column img {
   width: 100%;
   border-radius: 8px;
