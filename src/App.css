@@ -89,8 +89,8 @@ body h2 {
 }
 
 body h3 {
-  text-transform: uppercase;
   font-weight: 300;
+  color: grey;
 }
 
 .flex-parent {
@@ -247,7 +247,7 @@ header {
 /* CARD */
 
 .list-map a.link-card {
-  width: calc(100% / 5 - 30px);
+  width: calc(100% / 5 - 25px);
   aspect-ratio: 8 / 10;
 }
 
@@ -353,6 +353,60 @@ nav.menu-mobile .btn-outlined {
 #icon-menu-burger.hamburger:checked + label ~ nav.menu-mobile a {
   visibility: visible;
   opacity: 1;
+}
+
+/* GAMEDETAIL */
+
+.two-columns > div {
+  width: calc(50% - 30px);
+}
+.img-column img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.game-page h3 {
+  margin-bottom: 10px;
+}
+
+.flex-start {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.space-between {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.spec {
+  margin-bottom: 30px;
+}
+
+.btn-favoris {
+  height: 62px;
+  width: 120px;
+  border: 1px solid white;
+  border-radius: 8px;
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.btn-favoris i {
+  padding-bottom: 4px;
+  font-size: 15px;
+  width: 20px;
+}
+
+.btn-favoris p {
+  font-size: 16px;
+  text-align: left;
+  line-height: 20px;
 }
 
 /* PAGINATION */

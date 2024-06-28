@@ -15,8 +15,8 @@ import Card from "../components/Card";
 const Games = () => {
   const [data, setData] = useState();
   const [gamesList, setGamesList] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [nextPage, setNextPage] = useState();
   const [prevPage, setPrevPage] = useState();
@@ -27,7 +27,7 @@ const Games = () => {
         const response = await axios.get(
           `https://api.rawg.io/api/games?key=${
             import.meta.env.VITE_API_KEY
-          }&page=${page}`
+          }&page=${page}&search=${search}`
         );
         setData(response.data);
         setGamesList(response.data.results);
@@ -57,7 +57,7 @@ const Games = () => {
     };
 
     fetchData();
-  }, [page]);
+  }, [page, search]);
   console.log("gameList >", gamesList);
   console.log("prevPage >", prevPage);
 
@@ -74,11 +74,17 @@ const Games = () => {
             gamesList={gamesList}
             setGamesList={setGamesList}
           />
-          <p>
-            {isLoading === true
-              ? "No game available"
-              : `Search ${data.count} games`}
-          </p>
+
+          {isLoading === true ? (
+            <p>No game available</p>
+          ) : search ? (
+            <>
+              <p className="serch-results">Search result for “{search}“</p>
+              <p className="search-count">{data.count} games</p>
+            </>
+          ) : (
+            <p>Search {data.count} games</p>
+          )}
         </section>
         {isLoading === true ? (
           <p>Loading</p>

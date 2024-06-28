@@ -97,16 +97,126 @@ const GameDetail = () => {
   }
 
   return (
-    <main className="project-page">
-      <div className="wrap">
-        <div className="container">
-          <section
-            className="flex-parent two-colums"
-            // style={{
-            //   backgroundImage: `url(` + project.preview.secure_url + `)`,
-            // }}
-          ></section>
-        </div>
+    <main className="game-page">
+      <div className="container">
+        <section>
+          <h1 className="game-title">{gameDetail.name}</h1>
+          <div className="flex-parent two-columns">
+            <div className="img-column">
+              <img src={gameDetail.background_image} alt="" />
+            </div>
+            <div className="details-colum">
+              <div className="flex-start">
+                <button className="btn-favoris">
+                  <p>Save to Collection</p>
+                  <i className="fa-regular fa-bookmark"></i>
+                </button>
+                <button className="btn-favoris">
+                  <p>Add a Review</p>
+                  <i className="fa-regular fa-message"></i>
+                </button>
+              </div>
+              {/* Platforms & genres */}
+              <div className="space-between two-columns">
+                <div className="spec">
+                  <h3>Plateforms</h3>
+                  <p>
+                    {gameDetail.platforms.map((platform, index) => {
+                      return (
+                        <>
+                          <span key={index}>{platform.platform.name}</span>
+                          {index === gameDetail.platforms.length - 1
+                            ? ""
+                            : ", "}
+                        </>
+                      );
+                    })}
+                  </p>
+                </div>
+                <div className="spec">
+                  <h3>Genre</h3>
+                  <p>
+                    {gameDetail.genres.map((genre, index) => {
+                      return (
+                        <>
+                          <span key={index}>{genre.name}</span>
+                          {index === gameDetail.genres.length - 1 ? "" : ", "}
+                        </>
+                      );
+                    })}
+                  </p>
+                </div>
+              </div>
+              {/* Release date & dev */}
+              <div className="space-between two-columns">
+                <div className="spec">
+                  <h3>Release date</h3>
+                  <p>{gameDetail.released}</p>
+                </div>
+                <div className="spec">
+                  <h3>Developper</h3>
+                  <p>
+                    {gameDetail.developers.map((developer, index) => {
+                      return (
+                        <>
+                          <span key={index}>{developer.name}</span>
+                          {index === gameDetail.developers.length - 1
+                            ? ""
+                            : ", "}
+                        </>
+                      );
+                    })}
+                  </p>
+                </div>
+              </div>
+              {/* Publisher & Age rating */}
+              <div className="space-between two-columns">
+                {gameDetail.publishers.length !== 0 && (
+                  <div className="spec">
+                    <h3>Publisher</h3>
+                    <p>
+                      {gameDetail.publishers.map((publisher, index) => {
+                        return (
+                          <>
+                            <span key={index}>{publisher.name}</span>
+                            {index === gameDetail.publishers.length - 1
+                              ? ""
+                              : ", "}
+                          </>
+                        );
+                      })}
+                    </p>
+                  </div>
+                )}
+                {gameDetail.esrb_rating && (
+                  <div className="spec">
+                    <h3>Age rating</h3>
+                    <p>
+                      {gameDetail.esrb_rating.map((esrb_rating, index) => {
+                        return (
+                          <>
+                            <span key={index}>{esrb_rating.name}</span>
+                            {index === gameDetail.esrb_rating.length - 1
+                              ? ""
+                              : ", "}
+                          </>
+                        );
+                      })}
+                    </p>
+                  </div>
+                )}
+              </div>
+              <div className="one-columns">
+                {gameDetail.description && (
+                  <div className="spec">
+                    <h3>About</h3>
+                    <p>{gameDetail.description_raw}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );

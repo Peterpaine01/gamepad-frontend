@@ -6,6 +6,7 @@ import Logo from "./assets/logo-gamepad.png";
 
 // Components
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // Pages
 import Games from "./pages/Games";
@@ -20,6 +21,7 @@ const App = () => {
         {/* <Route path="/projet/:id" element={<Projet />} /> */}
         <Route path="/game/:id" element={<GameDetail />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

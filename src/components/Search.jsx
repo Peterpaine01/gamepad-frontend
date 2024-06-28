@@ -2,8 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 // Je récupère les props
-const Search = ({ kind, destination, gamesList, setGamesList }) => {
-  const [search, setSearch] = useState("");
+const Search = ({
+  kind,
+  destination,
+  gamesList,
+  setGamesList,
+  search,
+  setSearch,
+}) => {
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -21,13 +27,8 @@ const Search = ({ kind, destination, gamesList, setGamesList }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const value = event.target.value;
-    const filteredGames = gamesList.filter((game) =>
-      game.name.toLowerCase().includes(value.toLowerCase())
-    );
     setSearch(value);
     console.log(value);
-    setGamesList(filteredGames);
-    console.log(filteredGames);
   };
 
   return (
