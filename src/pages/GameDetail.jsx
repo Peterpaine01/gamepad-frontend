@@ -154,7 +154,7 @@ const GameDetail = () => {
                   <p>{gameDetail.released}</p>
                 </div>
                 <div className="spec">
-                  <h3>Developper</h3>
+                  <h3>Developer(s)</h3>
                   <p>
                     {gameDetail.developers.map((developer, index) => {
                       return (
