@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 
 // Pages
 import Games from "./pages/Games";
+import Login from "./pages/Login";
+import MyCollection from "./pages/MyCollection";
 import GameDetail from "./pages/GameDetail";
 
 const App = () => {
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/" element={<Games />} />
         {/* <Route path="/projet/:id" element={<Projet />} /> */}
         <Route path="/game/:id" element={<GameDetail />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/mycollection" element={<MyCollection />} />
       </Routes>
       <Footer />
     </Router>

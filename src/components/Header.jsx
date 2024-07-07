@@ -16,7 +16,7 @@ const Header = ({ logo, token }) => {
             </Link>
 
             <nav className="flex-parent">
-              <Link className="btn-light" to={`/favoris`}>
+              <Link className="btn-light" to={`/mycollection`}>
                 My Collection
               </Link>
               {token ? (
@@ -47,7 +47,7 @@ const Header = ({ logo, token }) => {
           <span></span>
         </label>
         <nav className="flex-parent menu-mobile">
-          <Link className="btn-light" to={`/favoris`}>
+          <Link className="btn-light" to={`/mycollection`}>
             My Collection
           </Link>
           {token ? (
