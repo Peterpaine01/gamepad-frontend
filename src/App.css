@@ -165,7 +165,7 @@ header {
   z-index: 100;
   position: fixed;
   width: 100%;
-  border-bottom: 1px solid #fc657b;
+  border-bottom: 1px solid var(--color-CTA);
   background-color: var(--color-primary);
   top: 0;
 }
@@ -345,6 +345,7 @@ nav.menu-mobile {
   -webkit-box-shadow: -1px 33px 30px -13px rgba(0, 0, 0, 0.19);
   -moz-box-shadow: -1px 33px 30px -13px rgba(0, 0, 0, 0.19);
   background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-CTA);
 }
 
 nav.menu-mobile a {
@@ -445,7 +446,7 @@ nav.menu-mobile .btn-outlined {
 }
 
 .btn-favoris {
-  height: 62px;
+  min-height: 62px;
   width: 120px;
   border: 1px solid white;
   border-radius: 8px;
@@ -543,6 +544,10 @@ footer a {
 
 .burger-menu {
   display: none;
+}
+
+.burger-menu .btn-light:hover::before {
+  width: 0%;
 }
 
 *,
@@ -677,6 +682,65 @@ nav a {
   }
 }
 
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+  .flex-parent {
+    gap: 40px;
+  }
+  .list-map a.link-card {
+    width: calc(100% / 4 - 30px);
+  }
+
+  /* PAGE GAME DETAILS */
+
+  .two-columns > div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 828px) {
+  .list-map a.link-card {
+    width: calc(100% / 3 - 15px);
+  }
+
+  .flex-parent {
+    gap: 20px;
+  }
+
+  .logoHD {
+    width: 100%;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 725px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .top-menu nav {
+    display: none;
+  }
+
+  .toggle-top {
+    font-size: 14px;
+  }
+
+  .list-map a.link-card {
+    width: calc(100% / 2 - 10px);
+  }
+
+  .btn-favoris {
+    min-height: 40px;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 680px) {
   .burger-menu {
@@ -689,5 +753,11 @@ nav a {
 
   .toggle-top {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 100%;
   }
 }
