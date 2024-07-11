@@ -756,8 +756,21 @@ nav a {
   }
 }
 
-@media (max-width: 400px) {
-  .card {
+@media (max-width: 459px) {
+  .list-map a.link-card {
     width: 100%;
+  }
+
+  .filters-section aside {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* .filters-section .dropdown-filter {
+    width: 100%;
+  } */
+
+  .filters-section select {
+    width: auto;
   }
 }
